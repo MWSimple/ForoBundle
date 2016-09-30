@@ -1,7 +1,7 @@
 entityName: 'Grupo'
 entity: 'MWSimple\Bundle\ForoBundle\Entity\Grupo'
 repository: 'MWSimpleForoBundle:Grupo'
-index: 'admin_grupo_foro'
+index: 'foro_grupo'
 new: 'foro_grupo_new'
 edit: 'foro_grupo_edit'
 show: 'foro_grupo_show'
@@ -27,17 +27,11 @@ fieldsshow:
         label: 'Nombre'
         name: 'Nombre'
         type: 'string'
-        #class: 'col-lg-12'
-        #closerow: true
+        class: 'col-lg-8'
+        closerow: true
     a.miembros:
         label: 'Miembros'
         name: 'Miembros'
         type: 'ONE_TO_MANY'
         #class: 'col-lg-12'
         #closerow: true
-    # a.entrada:
-    #     label: 'Entrada'
-    #     name: 'Entrada'
-    #     type: 'ONE_TO_MANY'
-    #     #class: 'col-lg-12'
-    #     #closerow: true

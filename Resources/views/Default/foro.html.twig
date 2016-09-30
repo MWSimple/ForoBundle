@@ -1,4 +1,9 @@
 <h4 class="media-heading">{{ foro.nombre }}</h4>
+
+{% if foro.creador.id == usuario.id %}
+	<a class="btn btn-success miembros" role="button" href="{{ path('foro_grupo_edit', { 'id': foro.id }) }}" aria-expanded="false" aria-controls="collapseResponse"> Agregar Miembros</a>
+{% endif %}
+
 <ul class="list-inline list-unstyled">
 	<li>
 		<span><i class="glyphicon glyphicon-calendar"></i> {{ foro.updatedAt|localizeddate('full', 'none', 'es') }}</span>

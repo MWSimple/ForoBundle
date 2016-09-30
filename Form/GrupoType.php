@@ -39,17 +39,17 @@ class GrupoType extends AbstractType
                     'class' => "col-lg-12 col-md-12 col-sm-12 col-xs-12",
                 )
             ))
-            // ->add('entrada', 'select2', array(
-            //     'class' => 'MWSimple\Bundle\ForoBundle\Entity\Entrada',
-            //     'url'   => 'Grupo_autocomplete_entrada',
-            //     'configs' => array(
-            //         'multiple' => true,//required true or false
-            //         'width'    => 'off',
-            //     ),
-            //     'attr' => array(
-            //         'class' => "col-lg-12 col-md-12 col-sm-12 col-xs-12",
-            //     )
-            // ))
+            ->add('creador', 'select2', array(
+                'class' => $this->subjectInterface,
+                'url'   => 'Grupo_autocomplete_creador',
+                'configs' => array(
+                    'multiple' => false,//required true or false
+                    'width'    => 'off',
+                ),
+                'attr' => array(
+                    'class' => "col-lg-12 col-md-12 col-sm-12 col-xs-12",
+                )
+            ))
         ;
     }
     

@@ -43,17 +43,7 @@ class Grupo
     private $miembros;
 
     /**
-     * @ORM\ManyToMany(targetEntity="MWSimple\Bundle\ForoBundle\Model\FosUserSubjectInterface")
-     * @ORM\JoinTable(name="mws_grupo_userfos_editores",
-     *      joinColumns={@ORM\JoinColumn(name="mws_grupo", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="fos_user", referencedColumnName="id")}
-     *      )
-     *
-     */
-    private $editores;
-
-    /**
-     * @ORM\OneToMany(targetEntity="MWSimple\Bundle\ForoBundle\Entity\Entrada", mappedBy="grupo")
+     * @ORM\OneToMany(targetEntity="MWSimple\Bundle\ForoBundle\Entity\Entrada", mappedBy="grupo", cascade={"remove"})
      * @ORM\JoinTable(name="mws_entrada")
      */
     private $entradas;
@@ -63,6 +53,12 @@ class Grupo
      * updates createdAt, updatedAt fields
      */
     use TimestampableEntity;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="MWSimple\Bundle\ForoBundle\Model\FosUserSubjectInterface")
+     * @var FosUserSubjectInterface
+     */
+    private $creador;
 
     /**
      * Get id
@@ -209,5 +205,28 @@ class Grupo
     public function getEntradas()
     {
         return $this->entradas;
+    }
+
+    /**
+     * Set creador
+     *
+     * @param \MWSimple\Bundle\ForoBundle\Model\FosUserSubjectInterface $creador
+     * @return Respuesta
+     */
+    public function setCreador(\MWSimple\Bundle\ForoBundle\Model\FosUserSubjectInterface $creador = null)
+    {
+        $this->creador = $creador;
+
+        return $this;
+    }
+
+    /**
+     * Get creador
+     *
+     * @return \MWSimple\Bundle\ForoBundle\Model\FosUserSubjectInterface 
+     */
+    public function getCreador()
+    {
+        return $this->creador;
     }
 }

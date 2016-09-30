@@ -41,7 +41,7 @@ class Entrada
     /**
      * @var \MWSimple\Bundle\ForoBundle\Entity\Grupo
      *
-     * @ORM\ManyToOne(targetEntity="MWSimple\Bundle\ForoBundle\Entity\Grupo", inversedBy="entradas")
+     * @ORM\ManyToOne(targetEntity="MWSimple\Bundle\ForoBundle\Entity\Grupo", inversedBy="entradas", cascade={"remove"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="grupo_Id", referencedColumnName="id")
      * })

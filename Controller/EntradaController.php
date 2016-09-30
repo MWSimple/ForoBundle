@@ -17,7 +17,7 @@ use MWSimple\Bundle\ForoBundle\Form\EntradaFilterType;
  * Entrada controller.
  * @author Nombre Apellido <name@gmail.com>
  *
- * @Route("/foroentrada")
+ * @Route("/foro/entrada")
  */
 class EntradaController extends Controller
 {
@@ -90,7 +90,7 @@ class EntradaController extends Controller
     /**
      * Finds and delete a Entrada entity.
      *
-     * @Route("/id/{entrada_id}", name="borrar_entrada", options={"expose"=true})
+     * @Route("/{entrada_id}", name="foro_entrada_delete", options={"expose"=true})
      * @Method("DELETE")
      */
     public function deletedEntrada(Request $request, $entrada_id) {

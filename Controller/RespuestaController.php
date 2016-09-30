@@ -17,7 +17,7 @@ use MWSimple\Bundle\ForoBundle\Form\RespuestaFilterType;
  * Respuesta controller.
  * @author Nombre Apellido <name@gmail.com>
  *
- * @Route("/fororespuesta")
+ * @Route("/foro/respuesta")
  */
 class RespuestaController extends Controller
 {
@@ -89,7 +89,7 @@ class RespuestaController extends Controller
     /**
      * Finds and delete a Respuesta entity.
      *
-     * @Route("/id/{respuesta_id}", name="borrar_respuesta", options={"expose"=true})
+     * @Route("/{respuesta_id}", name="foro_respuesta_delete", options={"expose"=true})
      * @Method("DELETE")
      */
     public function deletedRespuesta(Request $request, $respuesta_id) {

@@ -22,7 +22,7 @@ use Symfony\Component\Yaml\Yaml;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/{foro_id}", name="mws_front_foro", options={"expose"=true}))
+     * @Route("/{foro_id}", name="foro_front", options={"expose"=true}))
      * @Method("GET")
      */
     public function indexAction(Request $request, $foro_id = null) {
@@ -58,9 +58,12 @@ class DefaultController extends Controller
         $foro = $em->getRepository('MWSimpleForoBundle:Grupo')->find($foro_id);
         $entradas = $em->getRepository('MWSimpleForoBundle:Entrada')->getEntradasForo($foro_id);
         
+        $usuario = $this->get('security.context')->getToken()->getUser();
+        
         return $this->render('MWSimpleForoBundle:Default:foro.html.twig', array(
             'foro' => $foro,
             'entradas' => $entradas,
+            'usuario' => $usuario,
         ));
         
     }

@@ -1,1 +1,54 @@
-{% extends 'MWSimpleAdminCrudBundle:Default:edit.html.twig' %}
+{% extends 'MWSimpleAdminCrudBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - {{ 'views.edit.edit'|trans({'%entity%': config.entityName}, 'MWSimpleAdminCrudBundle') }}
+{% endblock %}
+
+{% block page %}
+    {% form_theme edit_form 'MWSimpleAdminCrudBundle:widget:fields.html.twig' %}
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="panel panel-primary center-block">
+                <div class="panel-heading">
+                    <i class="glyphicon glyphicon-pencil"></i> {{ 'views.edit.edit'|trans({'%entity%': config.entityName}, 'MWSimpleAdminCrudBundle') }}
+                </div>
+                <div class="panel-body">
+                    {% block form %}
+                    	{% if is_granted('ROLE_ADMIN') %}
+                        	{{ form(edit_form) }}
+                        {% else %}
+                            {{ form_start(edit_form) }}
+                                {{ form_widget(edit_form.nombre, { 'attr': {'style': 'display: none'} }) }}
+                                {{ form_widget(edit_form.creador, { 'attr': {'style': 'display: none'} }) }}
+                        	    {{ form_widget(edit_form.saveAndAdd, { 'attr': {'style': 'display: none'} }) }}
+                                {{ form_row(edit_form.miembros) }}
+                                <br></br>
+                                {{ form_row(edit_form.save) }}
+                            {{ form_end(edit_form) }}
+                        {% endif %}    
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        {% block buttonsbelow %}
+            {% if is_granted('ROLE_ADMIN') %}
+            	<div class="col-lg-2 col-md-2 col-sm-2">{{ form(delete_form) }}</div>
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    {% if config.validator is defined %}
+        {% if config.validator == true %}
+            <script src="{{ asset('bundles/mwsimpleadmincrud/js/widget.js') }}"></script>
+        {% else %}
+            <script src="{{ asset('bundles/mwsimpleadmincrud/js/widget_not_validator.js') }}"></script>
+        {% endif %}
+    {% else %}
+        <script src="{{ asset('bundles/mwsimpleadmincrud/js/widget.js') }}"></script>
+    {% endif %}
+{% endblock %}
