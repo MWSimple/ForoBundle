@@ -43,7 +43,7 @@
         $(".deleteRespuesta").on('confirmed.bs.confirmation', function (e) {
             bloquearPantalla();
             var respuestaId = $(this).data('id');
-            var url = Routing.generate('borrar_respuesta', { respuesta_id: respuestaId });
+            var url = Routing.generate('foro_respuesta_delete', { respuesta_id: respuestaId });
             $.ajax({
                 type: "DELETE",
                 url: url,

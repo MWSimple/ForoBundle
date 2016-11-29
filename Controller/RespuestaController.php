@@ -60,7 +60,7 @@ class RespuestaController extends Controller
             $em->flush();
 
             // Redirect 
-            return $this->redirect($this->generateUrl('foro_mws', array(
+            return $this->redirect($this->generateUrl('mws_foro_front', array(
                 'foro_id' => $entrada->getGrupo()->getId())) .
                 '#respuesta-' . $respuesta->getId()
             );
